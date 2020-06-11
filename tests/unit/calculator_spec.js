@@ -6,7 +6,6 @@ describe('calculator', function () {
     calculator = new Calculator()
   });
 
-  // write unit tests here in the form of "it should do something..."
   it('it has a sample test', function(){
     assert.equal(true, true)
   })

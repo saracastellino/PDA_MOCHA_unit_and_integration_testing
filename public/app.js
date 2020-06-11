@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function(){
     runningTotal.value = calculator.runningTotal;
   };
 
-  //bind number clicks to number buttons
   const numbers = document.querySelectorAll('.number');
   numbers.forEach(function(number) {
     number.onclick = function(evt) {
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   });
 
-  // bind operator clicks to operator buttons
   const operators = document.querySelectorAll('.operator');
   operators.forEach(function(button) {
     button.onclick =  function(evt) {
@@ -26,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   });
 
-  // handle clicking of the 'clear' button
   const clear = document.querySelector('#clear');
   clear.onclick = function() {
     calculator.clearClick();

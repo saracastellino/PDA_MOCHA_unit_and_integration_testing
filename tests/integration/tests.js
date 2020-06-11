@@ -8,8 +8,7 @@ describe('calculator functionality', function() {
     browser.ignoreSynchronization = true;
     browser.get('http://localhost:3000');
   });
-
-  // write integration tests here in the form of "it should do something..."
+  
   it('should have working number buttons', function(){
     running_total = element(by.css('#running_total'))
     element(by.css('#number2')).click();
@@ -33,11 +32,20 @@ describe('calculator functionality', function() {
     element(by.css('#operator_subtract')).click();
     element(by.css('#number8')).click();
     element(by.css('#operator_divide')).click();
-    element(by.css('#number3')).click();
+    element(by.css('#number2')).click();
     element(by.css('#operator_multiply')).click();
     element(by.css('#number8')).click();
     element(by.css('#operator_equals')).click()
-    expect(running_total.getAttribute('value')).to.eventually.equal('-5.333333333333333')
+    expect(running_total.getAttribute('value')).to.eventually.equal('-8')
+  })
+
+  it('should work with decimals', function(){
+    running_total = element(by.css('#running_total'))
+    element(by.css('#number8')).click();
+    element(by.css('#operator_divide')).click();
+    element(by.css('#number3')).click();
+    element(by.css('#operator_equals')).click()
+    expect(running_total.getAttribute('value')).to.eventually.equal('2.6666666666666665')
   })
 
   it('should work for very large numbers', function(){
@@ -47,6 +55,9 @@ describe('calculator functionality', function() {
     element(by.css('#number2')).click();
     element(by.css('#number5')).click();
     element(by.css('#number5')).click();
+    element(by.css('#number5')).click();
+    element(by.css('#number0')).click();
+    element(by.css('#number0')).click();
     element(by.css('#number5')).click();
     element(by.css('#number0')).click();
     element(by.css('#number0')).click();
@@ -60,7 +71,7 @@ describe('calculator functionality', function() {
     element(by.css('#number0')).click();
     element(by.css('#number0')).click();
     element(by.css('#operator_equals')).click()
-    expect(running_total.getAttribute('value')).to.eventually.equal('44511000')
+    expect(running_total.getAttribute('value')).to.eventually.equal('22277756000')
   })
 
   it('should display Err when dividing by zero', function(){
@@ -75,8 +86,3 @@ describe('calculator functionality', function() {
 });
 
 
-
-
-// What does the code do in exceptional circumstances? Specifically, if you divide by zero, what is the effect? 
-// Write a test to describe what you’d prefer to happen, and then correct the code to make that test pass 
-// (you will need to modify the Calculator model to meet this requirement).
